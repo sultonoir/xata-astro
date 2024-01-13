@@ -59,3 +59,11 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
 
   return redirect("/");
 };
+
+export const GET: APIRoute = ({ params, request }) => {
+  return new Response(
+    JSON.stringify({
+      message: "This was a GET!",
+    })
+  );
+};

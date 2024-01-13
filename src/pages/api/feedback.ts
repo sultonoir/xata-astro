@@ -1,20 +1,33 @@
 import type { APIRoute } from "astro";
 
-export const POST: APIRoute = async ({ request }) => {
-  const body = await request.json();
-  const email = body.email;
-  if (email === "") {
-    return new Response(null, { status: 400 });
-  }
-  if (request.headers.get("Content-Type") === "application/json") {
-    return new Response(
-      JSON.stringify({
-        message: "Your email was: " + email,
-      }),
-      {
-        status: 200,
-      }
-    );
-  }
-  return new Response(null, { status: 400 });
+export const GET: APIRoute = ({ params, request }) => {
+  return new Response(
+    JSON.stringify({
+      message: "This was a GET!",
+    })
+  );
+};
+
+export const POST: APIRoute = ({ request }) => {
+  return new Response(
+    JSON.stringify({
+      message: "This was a POST!",
+    })
+  );
+};
+
+export const DELETE: APIRoute = ({ request }) => {
+  return new Response(
+    JSON.stringify({
+      message: "This was a DELETE!",
+    })
+  );
+};
+
+export const ALL: APIRoute = ({ request }) => {
+  return new Response(
+    JSON.stringify({
+      message: `This was a ${request.method}!`,
+    })
+  );
 };
