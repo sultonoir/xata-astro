@@ -4,21 +4,24 @@ import { Input } from "./input";
 
 const FormSignin = () => {
   const [responseMessage, setResponseMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  async function submit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
+  async function submit() {
     const response = await fetch("/api/feedback", {
       method: "POST",
-      body: formData,
-    });
-    const data = await response.json();
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    }).then((t) => t.json());
+    const data = await response;
     if (data.message) {
       setResponseMessage(data.message);
     }
   }
   return (
-    <form onSubmit={submit}>
+    <form>
       <div className="grid w-full max-w-sm items-center gap-1.5">
         <Label htmlFor="email">Email</Label>
         <Input
@@ -26,6 +29,8 @@ const FormSignin = () => {
           name="email"
           id="email"
           placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -35,18 +40,17 @@ const FormSignin = () => {
           id="name"
           name="name"
           placeholder="name"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <div className="grid w-full max-w-sm items-center gap-1.5">
-        <Label htmlFor="email">message</Label>
-        <Input
-          type="message"
-          name="message"
-          id="message"
-          placeholder="message"
-        />
-      </div>
-      <button>Send</button>
+      <button
+        type="button"
+        className="inline-flex px-2 py-1 rounded-lg bg-primary text-white"
+        onClick={submit}
+      >
+        Submit
+      </button>
       {responseMessage && <p>{responseMessage}</p>}
     </form>
   );
