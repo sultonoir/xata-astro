@@ -21,7 +21,7 @@ if (search) {
 ---
  
 <MainLayout title="Get started with Xata and Astro">
- <div class="w-full max-w-5xl mt-16">
+ <div class="w-full max-w-5xl mt-16 container">
     <form action="/">
       <input
         name="q"
@@ -31,7 +31,7 @@ if (search) {
       />
     </form>
   </div>
-  <div class="w-full max-w-5xl mt-16">
+  <div class="w-full max-w-5xl mt-16 container">
     {posts.length === 0 && <p>No blog posts found</p>}
     {posts.map((posts) => (
       <div class="mb-16">
