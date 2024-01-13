@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { hash } from "bcrypt-ts";
-import { XataClient } from "../../xata";
+import { XataClient } from "../../../xata";
 const xata = new XataClient({
   apiKey: import.meta.env.XATA_API_KEY,
   branch: import.meta.env.XATA_BRANCH,
