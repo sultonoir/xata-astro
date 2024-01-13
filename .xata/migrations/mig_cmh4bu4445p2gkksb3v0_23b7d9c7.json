@@ -1,0 +1,17 @@
+{
+  "id": "mig_cmh4bu4445p2gkksb3v0",
+  "parentID": "mig_cmh4bj4445p2gkksb3u0",
+  "checksum": "1:23b7d9c7e5d7d33e5622dba46656c361455240e8ca5f79ab813c4ebc8a26cf2a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "name",
+          "type": "string",
+          "unique": true
+        },
+        "table": "Projects"
+      }
+    }
+  ]
+}

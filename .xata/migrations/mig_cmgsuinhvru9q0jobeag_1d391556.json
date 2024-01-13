@@ -1,0 +1,13 @@
+{
+  "id": "mig_cmgsuinhvru9q0jobeag",
+  "parentID": "mig_cmgsuhfhvru9q0jobe9g",
+  "checksum": "1:1d391556db11c31af5dbf9cb2e27891bc47219a9d09c746172bcfaa2f69ef1f6",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "name",
+        "table": "User"
+      }
+    }
+  ]
+}

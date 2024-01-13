@@ -1,24 +1,57 @@
 ---
-// Component Imports
-import Button from '../components/Button.astro';
+import MainLayout from '../layouts/main.astro';
+ 
+import { XataClient } from '../xata';
+ 
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH
+});
+ 
+let posts = await xata.db.post.getAll();
+const search = Astro.url.searchParams.get('q')! || '';
+ 
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+if (search) {
+  const { records } = await xata.db.post.search(search, { fuzziness: 2 });
+  posts = records;
+} else {
+  posts = await xata.db.post.getAll();
+}
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
-
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-		</div>
-	</body>
-</html>
+ 
+<MainLayout title="Get started with Xata and Astro">
+ <div class="w-full max-w-5xl mt-16">
+    <form action="/">
+      <input
+        name="q"
+        value={search}
+        placeholder="Search..."
+        class="w-full rounded-lg border-2 p-2 dark:text-purple-950"
+      />
+    </form>
+  </div>
+  <div class="w-full max-w-5xl mt-16">
+    {posts.length === 0 && <p>No blog posts found</p>}
+    {posts.map((posts) => (
+      <div class="mb-16">
+        <p class="text-xs mb-2 text-purple-950 dark:text-purple-200">
+          {posts.pubDate?.toDateString()}
+        </p>
+        <h2 class="text-2xl mb-2">
+          <a href={`posts/${posts.slug}`}>{posts.title}</a>
+        </h2>
+        <p class="text-purple-950 dark:text-purple-200 mb-5">
+          {posts.description}
+        </p>
+        <a
+          href={`posts/${posts.slug}`}
+          class="px-4 py-2 font-semibold text-sm bg-purple-700 text-white rounded-lg shadow-sm w-fit"
+        >
+          Read more &rarr;
+        </a>
+      </div>
+    ))}
+  </div>
+ 
+</MainLayout>

@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Sulton-s-workspace-4sbl61.ap-southeast-2.xata.sh/db/sultonoir-astro",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

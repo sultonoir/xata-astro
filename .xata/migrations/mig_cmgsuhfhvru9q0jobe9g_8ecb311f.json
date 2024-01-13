@@ -1,0 +1,13 @@
+{
+  "id": "mig_cmgsuhfhvru9q0jobe9g",
+  "parentID": "mig_cmgsshid27ofb0a9stbg",
+  "checksum": "1:8ecb311f8c0b1fd0236ae70c70ace8a972448e4024d15dcb7dacb72488f560f4",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "hashedPassword",
+        "table": "User"
+      }
+    }
+  ]
+}

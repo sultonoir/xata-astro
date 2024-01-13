@@ -1,0 +1,19 @@
+{
+  "id": "mig_cmh4cnk445p2gkksb410",
+  "parentID": "mig_cmh4c64445p2gkksb400",
+  "checksum": "1:1b21596790ea875dba7fef336b03526434fcf2151f8c4b90ae05de87ec678e7a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "imageUrl",
+          "type": "file[]",
+          "file[]": {
+            "defaultPublicAccess": true
+          }
+        },
+        "table": "Projects"
+      }
+    }
+  ]
+}

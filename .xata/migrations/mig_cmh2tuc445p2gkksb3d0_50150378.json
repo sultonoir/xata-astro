@@ -1,0 +1,48 @@
+{
+  "id": "mig_cmh2tuc445p2gkksb3d0",
+  "parentID": "mig_cmgsvevhvru9q0jobecg",
+  "checksum": "1:501503784e1049f76cac21d59d23572b254e91f7342b08f80af41d99132f0543",
+  "operations": [
+    {
+      "addTable": {
+        "table": "1"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "title",
+          "type": "string"
+        },
+        "table": "1"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "slug",
+          "type": "string"
+        },
+        "table": "1"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "description",
+          "type": "text"
+        },
+        "table": "1"
+      }
+    },
+    {
+      "addColumn": {
+        "column": {
+          "name": "pubDate",
+          "type": "datetime"
+        },
+        "table": "1"
+      }
+    }
+  ]
+}

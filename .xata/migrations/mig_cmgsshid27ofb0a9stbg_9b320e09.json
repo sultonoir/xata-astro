@@ -1,0 +1,19 @@
+{
+  "id": "mig_cmgsshid27ofb0a9stbg",
+  "parentID": "mig_cmgssa2d27ofb0a9stag",
+  "checksum": "1:9b320e09f13c524dd6feaacddebd5ded293f19a5f695a6dc4e1444bebcdb49dd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "imageUrl",
+          "type": "file",
+          "file": {
+            "defaultPublicAccess": true
+          }
+        },
+        "table": "User"
+      }
+    }
+  ]
+}
